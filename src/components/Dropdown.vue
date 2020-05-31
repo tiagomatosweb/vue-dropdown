@@ -3,6 +3,7 @@
         <button
             type="button"
             class="flex items-center justify-center leading-5 transition ease-in-out duration-150 z-50 text-sm font-medium text-cool-gray-700 hover:text-cool-gray-500 active:text-cool-gray-700 border border-cool-gray-300 focus:border-blue-300 focus:outline-none focus:shadow-outline-blue rounded px-4 py-2 bg-white active:bg-gray-50"
+            @click.stop.prevent="toggle()"
         >
             Dropdown
             <svg
@@ -19,7 +20,9 @@
         </button>
 
         <div
-            class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg z-50">
+            v-show="isOpen"
+            class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg z-50"
+        >
             <div class="py-1 rounded-md bg-white shadow-xs">
                 <ul>
                     <li class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 cursor-pointer">
@@ -55,7 +58,14 @@
 
         data() {
             return {
+                isOpen: false,
             };
+        },
+
+        methods: {
+            toggle() {
+                this.isOpen = !this.isOpen;
+            },
         },
     };
 </script>
