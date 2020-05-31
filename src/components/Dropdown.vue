@@ -2,11 +2,13 @@
     <div class="relative inline-block text-left">
         <button
             type="button"
-            class="flex items-center justify-center leading-5 transition ease-in-out duration-150 z-50 text-sm font-medium text-cool-gray-700 hover:text-cool-gray-500 active:text-cool-gray-700 border border-cool-gray-300 focus:border-blue-300 focus:outline-none focus:shadow-outline-blue rounded px-4 py-2 bg-white active:bg-gray-50"
+            class="flex items-center justify-center leading-5 transition ease-in-out duration-150 z-50 text-sm font-medium text-cool-gray-700 hover:text-cool-gray-500 active:text-cool-gray-700 focus:border-blue-300 focus:outline-none focus:shadow-outline-blue px-4 py-2 bg-white active:bg-gray-50"
+            :class="{ 'rounded-md': rounded, 'border border-cool-gray-300': !naked }"
             @click.stop.prevent="toggle()"
         >
             {{ text }}
             <svg
+                v-if="!noIcon"
                 class="h-4 w-4 -mr-1 ml-2"
                 fill="currentColor"
                 viewBox="0 0 20 20"
@@ -19,14 +21,23 @@
             </svg>
         </button>
 
-        <div
-            v-show="isOpen"
-            class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg z-50"
+        <Transition
+            enter-active-class="transition ease-out duration-100"
+            enter-class="transform opacity-0 scale-95"
+            enter-to-class="transform opacity-100 scale-100"
+            leave-active-class="transition ease-in duration-75"
+            leave-class="transform opacity-100 scale-100"
+            leave-to-class="transform opacity-0 scale-95"
         >
-            <div class="py-1 rounded-md bg-white shadow-xs">
-                <slot />
+            <div
+                v-show="isOpen"
+                class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg z-50"
+            >
+                <div class="py-1 rounded-md bg-white shadow-xs">
+                    <slot />
+                </div>
             </div>
-        </div>
+        </Transition>
     </div>
 </template>
 
@@ -38,6 +49,21 @@
             text: {
                 type: String,
                 default: 'Dropdown',
+            },
+
+            noIcon: {
+                type: Boolean,
+                default: false,
+            },
+
+            rounded: {
+                type: Boolean,
+                default: false,
+            },
+
+            naked: {
+                type: Boolean,
+                default: false,
             },
         },
 
@@ -67,6 +93,10 @@
 
         mounted() {
             document.addEventListener('click', this.clickOutListener);
+        },
+
+        beforeDestroy() {
+            document.removeEventListener('click', this.clickOutListener);
         },
 
         methods: {

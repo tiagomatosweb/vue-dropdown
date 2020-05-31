@@ -24,7 +24,8 @@
                     <DropdownItem>Item 5</DropdownItem>
                 </Dropdown>
 
-                <Dropdown text="Menu">
+
+                <Dropdown naked text="Menu">
                     <DropdownItem href="http://www.google.com">Item 1</DropdownItem>
                     <DropdownItem :to="{ name: 'foo' }">Item 2</DropdownItem>
                     <DropdownDivider />
