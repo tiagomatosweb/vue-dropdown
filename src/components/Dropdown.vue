@@ -25,29 +25,6 @@
         >
             <div class="py-1 rounded-md bg-white shadow-xs">
                 <slot />
-                <!--                <ul>-->
-                <!--                    <li class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 cursor-pointer">-->
-                <!--                        Opção 1-->
-                <!--                    </li>-->
-
-                <!--                    <li class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 cursor-pointer">-->
-                <!--                        Opção 2-->
-                <!--                    </li>-->
-
-                <!--                    <li class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 cursor-pointer">-->
-                <!--                        Opção 3-->
-                <!--                    </li>-->
-
-                <!--                    <div class="border-t my-1 border-cool-gray-100" />-->
-
-                <!--                    <li class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 cursor-pointer">-->
-                <!--                        Opção 4-->
-                <!--                    </li>-->
-
-                <!--                    <li class="block px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 cursor-pointer">-->
-                <!--                        Opção 5-->
-                <!--                    </li>-->
-                <!--                </ul>-->
             </div>
         </div>
     </div>
@@ -56,11 +33,18 @@
 <script>
     export default {
         name: 'Dropdown',
+
         props: {
             text: {
                 type: String,
                 default: 'Dropdown',
             },
+        },
+
+        provide() {
+            return {
+                dropdown: this,
+            };
         },
 
         data() {
@@ -72,6 +56,10 @@
         methods: {
             toggle() {
                 this.isOpen = !this.isOpen;
+            },
+
+            close() {
+                this.isOpen = false;
             },
         },
     };
