@@ -1,4 +1,5 @@
-# c1-components
+# vue-dropdown
+Componente criado durante aulas no meu canal do youtube.
 
 ## Project setup
 ```
