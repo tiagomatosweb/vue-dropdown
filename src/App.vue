@@ -10,10 +10,15 @@
 
             <div class="flex justify-center">
                 <Dropdown text="Menu">
-                    <DropdownItem>Item 1</DropdownItem>
-                    <DropdownItem>Item 2</DropdownItem>
+                    <DropdownItem href="http://www.google.com">Item 1</DropdownItem>
+                    <DropdownItem :to="{ name: 'foo' }">Item 2</DropdownItem>
                     <DropdownDivider />
-                    <DropdownItem>Item 3</DropdownItem>
+                    <DropdownItem
+                        href="http://www.google.com"
+                        :to="{ name: 'bar' }"
+                    >
+                        Item 3
+                    </DropdownItem>
                     <DropdownItem>Item 4</DropdownItem>
                     <DropdownDivider />
                     <DropdownItem>Item 5</DropdownItem>
