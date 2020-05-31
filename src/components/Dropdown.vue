@@ -53,6 +53,18 @@
             };
         },
 
+        watch: {
+            isOpen(value) {
+                if (value) {
+                    this.$root.$emit('dropdown::open', this);
+                }
+            },
+        },
+
+        created() {
+            this.$root.$on('dropdown::open', this.rootCloseListener);
+        },
+
         mounted() {
             document.addEventListener('click', this.clickOutListener);
         },
@@ -68,6 +80,12 @@
 
             clickOutListener(evt) {
                 if (!this.$el.contains(evt.target)) {
+                    this.close();
+                }
+            },
+
+            rootCloseListener(vm) {
+                if (vm !== this) {
                     this.close();
                 }
             },
