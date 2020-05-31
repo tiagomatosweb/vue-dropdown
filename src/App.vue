@@ -9,7 +9,15 @@
             </h3>
 
             <div class="flex justify-center">
-                <Dropdown />
+                <Dropdown text="Menu">
+                    <DropdownItem>Item 1</DropdownItem>
+                    <DropdownItem>Item 2</DropdownItem>
+                    <DropdownDivider />
+                    <DropdownItem>Item 3</DropdownItem>
+                    <DropdownItem>Item 4</DropdownItem>
+                    <DropdownDivider />
+                    <DropdownItem>Item 5</DropdownItem>
+                </Dropdown>
             </div>
         </div>
     </div>
@@ -17,11 +25,13 @@
 
 <script>
     import Dropdown from '@/components/Dropdown';
+    import DropdownItem from '@/components/DropdownItem';
+    import DropdownDivider from '@/components/DropdownDivider';
 
     export default {
         name: 'App',
 
-        components: { Dropdown },
+        components: { DropdownDivider, DropdownItem, Dropdown },
 
         data() {
             return {
