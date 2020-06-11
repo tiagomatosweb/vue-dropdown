@@ -1,6 +1,8 @@
 # vue-dropdown
 Componente criado durante aulas no meu canal do youtube.
 
+Segue o link da playlist https://www.youtube.com/playlist?list=PLcoYAcR89n-pyslmXfubaCxYo5I5B6MNk
+
 ## Project setup
 ```
 yarn install
@@ -8,7 +10,7 @@ yarn install
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
+yarn dev
 ```
 
 ### Compiles and minifies for production

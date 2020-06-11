@@ -1,16 +1,15 @@
 {
-    "name": "@tmweb/password-revealing",
+    "name": "@tmweb/vue-dropdown",
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "build": "vue-cli-service build --target lib --name password-revealing ./src/index.js",
+        "build": "vue-cli-service build",
         "lint": "yarn run lint:eslint && yarn run lint:stylelint",
         "dev": "vue-cli-service serve",
         "lint:eslint": "eslint --ext .js,.vue --ignore-path .eslintignore .",
         "lint:fix": "yarn run lint:eslint --fix && yarn run lint:stylelint --fix",
         "lint:stylelint": "stylelint './**/*.{css,scss,vue}'"
     },
-    "main": "dist/password-revealing.common.js",
     "lint-staged": {
         "*.{js,vue}": "yarn lint:eslint",
         "*.{css,vue}": "yarn lint:stylelint"
